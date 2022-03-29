@@ -1,0 +1,90 @@
+.cardwrapper1{
+    display: flex;
+    justify-content:center;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.h2titlecard{
+    width:100%;
+    font-size: 2rem;
+    text-align:center;
+    margin-top: 5%;
+    margin-bottom: 3%;
+    margin: none;
+}
+
+.iglogocard{
+    margin-left: 100px;
+    padding: 4px;
+    color: white;
+    background-color: black;
+    border-radius: 360px;
+    text-align: center;
+    line-height:100%;
+    z-index: 3;
+}
+
+.cardbody1{
+    margin: 2%;
+    height: 450px;
+    width: 300px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between;
+    align-items:center;
+    position: relative;
+    border-radius: 16px;
+    /* box-shadow: 1px 1px 10px black; */
+}
+
+.cardtext {
+    height: 230px;
+    margin: 4%;
+}
+
+.cardtext>h3{
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 4%;
+    width: 100%;
+    text-align: center;
+}
+
+.reviewcardp{
+    margin-top: 0;
+    line-height: 20px;
+    font-style: italic;
+    color: rgb(43, 43, 43);
+    text-align: center;
+}
+
+.stars{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    margin: 4%;
+    margin-left: -3px;
+    color: rgb(255, 196, 0);
+    font-size: 1rem;
+    /* line-height: 1rem; */
+    font-weight: bold;
+    width: 100%;
+    text-align: center;
+}
+
+.imgcard1{
+    border-radius:16px 16px 0 0;
+    height: 150px;
+    width: 300px;
+    object-fit: cover;
+}
+
+.imgcard2{
+    border-radius: 360px;
+    height: 110px;
+    position: absolute;
+    top: calc(150px - 55px);
+    left: calc(150px - 55px);
+}
