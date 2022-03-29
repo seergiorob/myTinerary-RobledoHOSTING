@@ -3,13 +3,13 @@ import axios from 'axios'
 const itineraryActions = {
   fetchearItineraries: () => {
     return async (dispatch, getState) => {
-      const res = await axios.get('http://localhost:4000/api/allitineraries')
+      const res = await axios.get('https://mytineraryrob.herokuapp.com/api/allitineraries')
       dispatch({ type: 'itineraries/fetch', payload: res.data.response })
     }
   },
   fetchearItinerary: (id) => {
     return async (dispatch, getState) => {
-      const res = await axios.get('http://localhost:4000/api/allitineraries/' + id);
+      const res = await axios.get('https://mytineraryrob.herokuapp.com/api/allitineraries/' + id);
       if (res.data.sucess) {
         dispatch({type: 'itineraries/fetchOne', payload: res.data.response })
       }
@@ -17,7 +17,7 @@ const itineraryActions = {
   },
   fetchearItinerarioPorCiudad: (id) => {
     return async (dispatch, getState) => {
-      const res = await axios.get('http://localhost:4000/api/allitineraries/city/' + id);
+      const res = await axios.get('https://mytineraryrob.herokuapp.com/api/allitineraries/city/' + id);
       // console.log(res.data)
       dispatch({type: 'itineraryCiudad/fetch', payload: res.data})
     }
@@ -26,7 +26,7 @@ const itineraryActions = {
     return async (dispatch, getState) =>{
       const token = localStorage.getItem('token')
       try{
-        const res = await axios.put('http://localhost:4000/api/likesAndDislike/', {...likesObj}, {
+        const res = await axios.put('https://mytineraryrob.herokuapp.com/api/likesAndDislike/', {...likesObj}, {
           headers: {'Authorization': 'Bearer ' + token}})
         return {success: true}
       }
