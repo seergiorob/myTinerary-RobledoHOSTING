@@ -33,7 +33,7 @@ let mailOptions = {
         <td colspan="2"><h1 style="color: rgba(0, 0, 0, 0.79); font-size: 2rem; text-align: center;" >Welcome to MyTinerary App</h1></td>
       </tr>
       <tr>
-        <td colspan="2"><h2 style="color: rgba(0, 0, 0, 0.79); font-size: 1rem; text-align: center;">Please click <a style="color: rgba(0, 0, 0, 0.557);" href=http://localhost:4000/api/verify/${uniqueString}>here</a> to confirm your email adress.</h2></td>
+        <td colspan="2"><h2 style="color: rgba(0, 0, 0, 0.79); font-size: 1rem; text-align: center;">Please click <a style="color: rgba(0, 0, 0, 0.557);" https://mytineraryrob.herokuapp.com/api/verify/${uniqueString}>here</a> to confirm your email adress.</h2></td>
       </tr>
     </tbody>
     </table>`
