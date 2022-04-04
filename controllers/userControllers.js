@@ -56,7 +56,7 @@ const userControllers = {
         if (user) {
             user.emailVerified = true
             await user.save()
-            res.redirect("http://localhost:3000")
+            res.redirect("https://mytineraryrob.herokuapp.com")
         }else{res.json({success: false, response: "Your email is not verified"})}
     },
 
