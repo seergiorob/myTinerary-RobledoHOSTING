@@ -25,7 +25,7 @@ let mailOptions = {
     html: `<table>
     <thead>
       <tr>
-        <th colspan="2"><img src="https://cdn.pixabay.com/photo/2014/12/16/22/25/woman-570883_960_720.jpg" alt="beach" width="600" height="350"></th>
+        <th colspan="2"><img src="https://www.indochinatour.com/assets/images/Thailand/Best-Time-to-Enjoy-a-Beach-Holiday-in-Thailand-banner.jpg" alt="beach" width="600" height="350"></th>
       </tr>
     </thead>
     <tbody>
@@ -33,7 +33,7 @@ let mailOptions = {
         <td colspan="2"><h1 style="color: rgba(0, 0, 0, 0.79); font-size: 2rem; text-align: center;" >Welcome to MyTinerary App</h1></td>
       </tr>
       <tr>
-        <td colspan="2"><h2 style="color: rgba(0, 0, 0, 0.79); font-size: 1rem; text-align: center;">Please click <a style="color: rgba(0, 0, 0, 0.557);" https://mytineraryrob.herokuapp.com/api/verify/${uniqueString}>here</a> to confirm your email adress.</h2></td>
+        <td colspan="2"><h2 style="color: rgba(0, 0, 0, 0.79); font-size: 1rem; text-align: center;">Please click <a style="color: rgba(0, 0, 0, 0.557);" <a href="https://mytineraryrob.herokuapp.com/api/verify/${uniqueString}">here</a> to confirm your email adress.</h2></td>
       </tr>
     </tbody>
     </table>`
