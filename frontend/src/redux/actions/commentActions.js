@@ -1,4 +1,5 @@
 import axios from 'axios'
+import api from '../../api/api'
 
 const commentActions = {
     addComment: (commentObj, itineraryId) => {
@@ -6,7 +7,7 @@ const commentActions = {
 
         try{
             const token = localStorage.getItem('token')
-            await axios.post(`https://http://localhost:4000/api/comments/${itineraryId}`,
+            await axios.post(`${api.url}/api/comments/${itineraryId}`,
             {...commentObj},
             {headers: {"Authorization": `Bearer ${token}` }}
             )
@@ -21,7 +22,7 @@ const commentActions = {
         return async () => {
             try{
                 const token = localStorage.getItem('token')
-                await axios.delete(`https://http://localhost:4000/api/comments/${itineraryId}/${commentId}`,
+                await axios.delete(`${api.url}/api/comments/${itineraryId}/${commentId}`,
                 {headers: {"Authorization": `Bearer ${token}` }}
                 )
                 return{success:true}
@@ -35,7 +36,7 @@ const commentActions = {
         return async () => {
             try{
                 const token = localStorage.getItem('token')
-                await axios.put(`https://http://localhost:4000/api/comments/${itineraryId}`,
+                await axios.put(`${api.url}/api/comments/${itineraryId}`,
                 {...editObj},
                 {headers: {"Authorization": `Bearer ${token}` }}
                 )

@@ -1,5 +1,5 @@
 import axios from "axios";
-// import {get} from '@api/index';
+import api from '../../api/api';
 
 
 // const refactoredActivityForEachItinerary =  (itineraryId)=>{
@@ -20,7 +20,7 @@ const activitiesActions = {
     return async (dispatch, getState) => {
       try {
         const response = await axios.get(
-          `http://localhost:4000/api/activities/${itineraryId}`
+          `${api.url}/api/activities/${itineraryId}`
         );
         return { success: true, response: response.data.response };
       } catch (error) {
