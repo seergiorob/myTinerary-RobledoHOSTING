@@ -1,15 +1,16 @@
-import axios from 'axios'
+import axios from 'axios';
+// import {API_URL} from '../config';
 
 const ciudadesActions = {
   fetchearCiudades: () => {
     return async (dispatch, getState) => {
-      const res = await axios.get('https://mytineraryrob.herokuapp.com/api/allcities')
-      dispatch({ type: 'ciudades/fetch', payload: res.data.response.ciudades })
+      const res = await axios.get('http://localhost:4000/api/allcities')
+      dispatch({ type: 'ciudades/fetch', payload: res?.data?.response.ciudades })
     }
   },
   fetchearCiudad: (id) => {
     return async (dispatch, getState) => {
-      const res = await axios.get('https://mytineraryrob.herokuapp.com/api/allcities/' + id);
+      const res = await axios.get('http://localhost:4000/api/allcities/' + id);
       // console.log(res.data.response)
       try{
         dispatch({type: 'ciudad/fetchOne', payload: res.data.response })
@@ -22,7 +23,7 @@ const ciudadesActions = {
   borrarCiudad: (id) => {
     return async (dispatch, getState) => {
       try {
-        const res = await axios.delete('https://mytineraryrob.herokuapp.com/api/allcities/' + id)
+        const res = await axios.delete('http://localhost:4000/api/allcities/' + id)
         dispatch({ type: 'ciudades/delete', payload: res.data.response.ciudad })
       } catch (err) {
         console.log(err)
@@ -37,12 +38,12 @@ const ciudadesActions = {
   cargarCiudad: (name, image, currency, population, country, timezone) => {
     return async (dispatch, getState) => {
       const respuesta = await axios.post(
-        'https://mytineraryrob.herokuapp.com/api/allcities)',
+        'http://localhost:4000/api/allcities)',
         { name, image, currency, population, country, timezone },
       )
       dispatch({
         type: 'ciudades/cargarCiudad',
-        payload: respuesta.data.response.ciudades,
+        payload: respuesta?.data.response.ciudades,
       })
     }
   },

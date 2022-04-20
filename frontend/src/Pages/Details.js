@@ -1,5 +1,6 @@
 import React from 'react'
 import DetailsC from '../components/details/Details'
+// import DetailsC from '@components/details/Details'
 import ControlledAccordions from '../components/AccordionDetails/accordionDetails'
 
 function Details() {
