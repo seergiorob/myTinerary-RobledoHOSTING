@@ -2,15 +2,52 @@ const axios = require('axios');
 
 const port = 4000;
 
-const url = 'http://localhost:' + port;
+const url = `http://localhost:${port}`;
 
-function fetchearCiudades() {
-    return axios.get(url + '/api/allcities');
-}
+const get = async uri => {
+  try {
+    const res = await axios.get(`${url}/${uri}`);
+    return {
+      success: true,
+      response: res.data.response,
+    };
+  } catch (err) {
+    return {
+      success: false,
+      response: err,
+    };
+  }
+};
 
-function fetchearCiudad(id) {
-    return axios.get(url + '/api/allcities/' + id);
-}
+const delet = async uri => {
+  try {
+    const res = await axios.delete(`${url}/${uri}`);
+    return {
+      success: true,
+      response: res.data.response,
+    };
+  } catch (err) {
+    return {
+      success: false,
+      response: err,
+    };
+  }
+};
+// put, post,
 
+const post = async (uri, data) => {
+  try {
+    const res = await axios.post(`${url}/${uri}`, data);
+    return {
+      success: true,
+      response: res.data.response,
+    };
+  } catch (err) {
+    return {
+      success: false,
+      response: err,
+    };
+  }
+};
 
-module.exports = { url, fetchearCiudades, fetchearCiudad };
+module.exports = { url, get, delet, post };

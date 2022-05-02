@@ -1,61 +1,77 @@
 import axios from 'axios';
 import api from '../../api/api';
+import { get, delet } from '../../api/api';
 
 const ciudadesActions = {
   fetchearCiudades: () => {
     return async (dispatch, getState) => {
-    try {
-      const res = await api.fetchearCiudades();
-      if (res.data.success) {
-      dispatch({ type: 'ciudades/fetch', payload: res?.data?.response.ciudades })}
-    }catch (err) {
-      console.log(err);
-    }
-  }
-  },
-  fetchearCiudad: (id) => {
-    return async (dispatch, getState) => {
-      try{
-      const res = await api.fetchearCiudad(id);
-      if (res.data.success) {
-        dispatch({type: 'ciudad/fetchOne', payload: res.data.response })}
-      }catch (err) {
-        console.log(err)
+      const res = await get('api/allcities');
+      if (!res.success) {
+        console.log(res);
+        //algo malo pasó
+        return false;
       }
-    }
+      dispatch({
+        type: 'ciudades/fetch',
+        payload: res?.response?.ciudades,
+      });
+    };
   },
-  borrarCiudad: (id) => {
+  fetchearCiudad: id => {
     return async (dispatch, getState) => {
-      try {
-        const res = await axios.delete(`${api.url}/api/allcities/` + id)
-        dispatch({ type: 'ciudades/delete', payload: res.data.response.ciudad })
-      } catch (err) {
-        console.log(err)
+      const res = await get(`api/allcities/${id}`);
+
+      if (!res.success) {
+        console.log(res);
+        //algo malo pasó
+        return false;
       }
-    }
+
+      dispatch({ type: 'ciudad/fetchOne', payload: res.response });
+    };
   },
-  filtrar: (value) => {
+  borrarCiudad: id => {
+    return async (dispatch, getState) => {
+      const res = await delet(`api/allcities/${id}`);
+      if (!res.success) {
+        console.log(res);
+        //algo malo pasó
+        return false;
+      }
+
+      dispatch({
+        type: 'ciudades/delete',
+        payload: res.response.ciudad,
+      });
+    };
+  },
+  filtrar: value => {
     return (dispatch, getState) => {
-      dispatch({ type: 'ciudades/filtro', payload: value })
-    }
+      dispatch({ type: 'ciudades/filtro', payload: value });
+    };
   },
   cargarCiudad: (name, image, currency, population, country, timezone) => {
     return async (dispatch, getState) => {
       try {
-      const respuesta = await axios.post(
-        `${api.url}/api/allcities)`,
-        { name, image, currency, population, country, timezone },
-      )
-      if(respuesta.data.success){
-      dispatch({
-        type: 'ciudades/cargarCiudad',
-        payload: respuesta?.data.response.ciudades,
-      })}
-    } catch (err) {
-      console.log(err)
-    }
-  }
-  }
-} 
+        const respuesta = await axios.post(`${api.url}/api/allcities)`, {
+          name,
+          image,
+          currency,
+          population,
+          country,
+          timezone,
+        });
+        if (respuesta.data.success) {
+          dispatch({
+            type: 'ciudades/cargarCiudad',
+            payload: respuesta?.data.response.ciudades,
+          });
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    };
+  },
+};
 
-export default ciudadesActions
+export default ciudadesActions;
